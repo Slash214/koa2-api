@@ -18,6 +18,8 @@ const port = process.env.PORT || config.port
 // 允许跨域
 app.use(cors())
 
+// test
+
 //token验证
 // app.use(loginCheck)
 
