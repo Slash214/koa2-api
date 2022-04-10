@@ -3,25 +3,19 @@
  * @author 爱呵呵
  */
 
-const {
-  format
-} = require('date-fns')
+const { format } = require('date-fns')
 
-function timeModeFormat(str, mb) {
+/**
+ * 时间格式化
+ * @param {string} str 时间 
+ * @param {*} mb 格式化时间的样式  默认xxxx年xx月xx日 xx时xx分
+ * @returns yyyy.MM.dd HH:mm
+ */
+const formatTime = (str, mb = 'yyyy.MM.dd HH:mm') => {
   return format(new Date(str), mb)
-}
+} 
 
-function timeFormat(str) {
-  // return format(new Date(str), 'yyyy.MM.dd HH:mm')
-  return format(new Date(str), 'yyyy.MM.dd')
-}
-
-function timeFormatTwo(str) {
-  return format(new Date(str), 'yyyy-MM-dd HH:mm:ss')
-}
-
-
-function ago(value) {
+const formatDay = value => {
   if (value) {
     // 计算出时间 单位秒
     const seconds = Math.floor((+new Date() - +new Date(value)) / 1000)
@@ -55,10 +49,7 @@ function ago(value) {
   return value
 }
 
-
 module.exports = {
-  timeFormat,
-  timeFormatTwo,
-  ago,
-  timeModeFormat
+  formatDay,
+  formatTime
 }

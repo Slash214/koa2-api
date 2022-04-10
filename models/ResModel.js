@@ -6,8 +6,8 @@
 
 // 基础模块
 class BaseModel {
-    constructor({ state, data, message,code }) {
-        this.state = state
+    constructor({ status, data, message,code }) {
+        this.status = status
         if (data) {
             this.data = data
         }
@@ -22,11 +22,12 @@ class BaseModel {
 
 // 成功返回模型
 class SuccessModel extends BaseModel {
-    constructor(data = {}, ) {
+    constructor({ data = {},  total = 0 }) {
         super({
-            state: 'success',
+            status: 'success',
             code: 200,
-            data
+            data,
+            total
         })
     }
 }

@@ -1,19 +1,18 @@
-# 项目[project]
+# 项目
+#### 基于Koa框架 的 API 接口
 #### 封装的一个koa2框架，定义好了接口类型，数据库处理方面使用的是squelize
 #### 添加了微信支付接口的逻辑
 #### 图片上传服务器同时支持上传七牛云
 #### 服务端接口请求使用的axios
 
-# 基于Koa框架 的 API 接口
-
-# npm
+# npm install 
 ### git clone project address && npm isntall
 ### npm run dev  运行开发环境
 ### npm run prd  运行上线环境
-### 或者 [pm2 restart dev-server --name newname [newname PM2启动项目名称]]
+### or pm2 restart dev-server --name newname   || newname PM2启动项目名称
 
 
-# 目录结构[directory structure]
+# 目录结构
 > views 页面    
 > utils 工具函数    
 > models 数据返回模型    

@@ -12,23 +12,20 @@ const path = require('path')
 const { SESSION_SECRET_KEY } = require('./conf/secreKey')
 const cors = require('koa2-cors')
 const config = require('./config')
-
 const port = process.env.PORT || config.port
+
+
+const routing = require('./routes/index')
 
 // 允许跨域
 app.use(cors())
 
 // test
-
 //token验证
 // app.use(loginCheck)
 
 // 路由
-const IndexRouter = require('./routes/index')
-const MenuRouter = require('./routes/menu')
-const ShopRouter = require('./routes/shop')
-const WechatRouter = require('./routes/wechat')
-const AdminRouter = require('./routes/admin')
+routing(app)
 
 /** 404 */
 const NoPageRouter= require('./routes/404')
@@ -69,17 +66,9 @@ app.use(async(ctx, next) => {
     console.log(`${ctx.method} ${ctx.url} - $ms`)
 })
 
-// router 注册
-app.use(IndexRouter.routes(), IndexRouter.allowedMethods())
-app.use(ShopRouter.routes(), ShopRouter.allowedMethods())
-app.use(MenuRouter.routes(), MenuRouter.allowedMethods())
-app.use(WechatRouter.routes(), WechatRouter.allowedMethods())
-app.use(AdminRouter.routes(), AdminRouter.allowedMethods())
 
 /**404 */
 app.use(NoPageRouter.routes(), NoPageRouter.allowedMethods())
-
-
 
 app.on('error', function(err, ctx) {
     console.log(err)

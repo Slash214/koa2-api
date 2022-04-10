@@ -8,7 +8,7 @@ module.exports = {
   // 没有当前路由
   NoPageRouter: {
     code: 5000,
-    message: 'The current route is empty'
+    message: '404 ROUTER'
   },
   // 菜单生成失败 存在相同名称
   MenuCreateFail: {

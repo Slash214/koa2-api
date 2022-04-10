@@ -216,7 +216,7 @@ router.post('/updateAddress', async (ctx, next) => {
   if ( address_id && user_id) {
     const oldData = { isdefault: 2 }
     const newData = { isdefault: 1 }
-    const r1
+    let r1
     // 改变之前的
     if (Boolean(old_address_id)) {
       r1 = await Address.update(oldData, {

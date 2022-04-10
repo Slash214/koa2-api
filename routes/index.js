@@ -1,16 +1,11 @@
-/**
- * @author 爱呵呵
- * @description 首页进入的路由
- */
-
-const router = require('koa-router')()
-
-router.get('/', async(ctx, next) => {
-    ctx.body = 'WELCOME'
-    ctx.state = {
-        title: 'Joshua Yang'
+// 批量导出路由，批量注册
+const fs = require("fs");
+module.exports = (app) => {
+  fs.readdirSync(__dirname).forEach((file) => {
+    if (file === "index.js") {
+      return;
     }
-    await ctx.render('index', ctx.state)
-})
-
-module.exports = router
+    const route = require(`./${file}`);
+    app.use(route.routes()).use(route.allowedMethods());
+  });
+};

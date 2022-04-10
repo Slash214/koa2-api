@@ -5,7 +5,7 @@
 
 const Sequelize = require('sequelize')
 const { MYSQL_CONF } = require('../conf/db')
-const { isTest } = require('../utils/env')
+const { isTest, isProd } = require('../utils/env')
 
 const { host, user, password, database } = MYSQL_CONF
 // 本地连接不适合上线使用
@@ -21,7 +21,7 @@ if (isTest) {
 }
 
 // 线上环境 使用 连接池
-if (1) {
+if (isProd) {
     conf.pool = {
         max: 5, // 连接池最大连接数量
         min: 0, // 最小
